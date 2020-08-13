@@ -26,4 +26,32 @@ for d in data:
 	if 'good' in d:
 		good.append(d)
 print('一共有', len(good), '筆留言提到good')
-print(good[0])
+
+#文字計數
+word_count = {}
+for d in data:
+	words = d.split(' ')
+	for word in words:
+		if word in word_count:
+			word_count[word] += 1
+		else:
+			word_count[word] = 1 #新增key 進字典
+
+
+for word in word_count:
+	if word_count[word] > 1000000:
+		print(word, word_count[word])
+
+print(len(word_count))
+print(word_count['Allen'])
+
+while True:
+	word = input('請問你想查什麼字:')
+	if word == 'q':
+		break
+	if word in word_count:
+		print(word, '出現過的次數為:', word_count[word])
+	else:
+		print('這個字沒有出現過喔!')
+
+print('感謝使用本查詢功能!')
